@@ -9,10 +9,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.ICanchaDao;
-import pe.edu.upc.entity.Cancha;
+import pe.edu.upc.dao.IDeporteDao;
+import pe.edu.upc.entity.Deporte;
 
-public class CanchaDaoImpl implements ICanchaDao, Serializable{
+public class DeporteDaoImpl implements IDeporteDao, Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="a")
@@ -21,24 +21,24 @@ public class CanchaDaoImpl implements ICanchaDao, Serializable{
 	
 	@Transactional
 	@Override
-	public void insertar(Cancha cancha) {
-		em.persist(cancha);
+	public void insertar(Deporte deporte) {
+		em.persist(deporte);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Cancha> listar() {
-		List<Cancha> lista = new ArrayList<Cancha>();
-		Query q = em.createQuery("select c from Cancha c");
-		lista = (List<Cancha>) q.getResultList();
+	public List<Deporte> listar() {
+		List<Deporte> lista = new ArrayList<Deporte>();
+		Query q = em.createQuery("select d from Deporte d");
+		lista = (List<Deporte>) q.getResultList();
 		return lista;
 	}
 	
 	@Transactional
 	@Override
-	public void eliminar(int canchaID) {
-		Cancha cancha = new Cancha();
-		cancha = em.getReference(Cancha.class, canchaID);
-		em.remove(cancha);
+	public void eliminar(int sportID) {
+		Deporte deporte = new Deporte();
+		deporte = em.getReference(Deporte.class, sportID);
+		em.remove(deporte);
 	}
 }

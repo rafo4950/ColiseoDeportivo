@@ -9,10 +9,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.ICanchaDao;
-import pe.edu.upc.entity.Cancha;
+import pe.edu.upc.dao.IAdminDao;
+import pe.edu.upc.entity.Admin;
 
-public class CanchaDaoImpl implements ICanchaDao, Serializable{
+public class AdminDaoImpl implements IAdminDao, Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="a")
@@ -21,24 +21,24 @@ public class CanchaDaoImpl implements ICanchaDao, Serializable{
 	
 	@Transactional
 	@Override
-	public void insertar(Cancha cancha) {
-		em.persist(cancha);
+	public void insertar(Admin admin) {
+		em.persist(admin);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Cancha> listar() {
-		List<Cancha> lista = new ArrayList<Cancha>();
-		Query q = em.createQuery("select c from Cancha c");
-		lista = (List<Cancha>) q.getResultList();
+	public List<Admin> listar() {
+		List<Admin> lista = new ArrayList<Admin>();
+		Query q = em.createQuery("select a from Admin a");
+		lista = (List<Admin>) q.getResultList();
 		return lista;
 	}
 	
 	@Transactional
 	@Override
-	public void eliminar(int canchaID) {
-		Cancha cancha = new Cancha();
-		cancha = em.getReference(Cancha.class, canchaID);
-		em.remove(cancha);
+	public void eliminar(int adminID) {
+		Admin admin = new Admin();
+		admin = em.getReference(Admin.class, adminID);
+		em.remove(admin);
 	}
 }

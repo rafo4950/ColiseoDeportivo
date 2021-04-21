@@ -11,6 +11,12 @@ import javax.inject.Named;
 
 import pe.edu.upc.entity.Cancha;
 import pe.edu.upc.service.ICanchaService;
+import pe.edu.upc.entity.Deporte;
+import pe.edu.upc.service.IDeporteService;
+import pe.edu.upc.entity.Sede;
+import pe.edu.upc.service.ISedeService;
+import pe.edu.upc.entity.Horario;
+import pe.edu.upc.service.IHorarioService;
 
 @Named
 @RequestScoped
@@ -20,16 +26,42 @@ public class CanchaController implements Serializable {
 	
 	@Inject
 	private ICanchaService cService;
-
-	Cancha cancha;
+	
+	@Inject
+	private IDeporteService dService;
+	
+	@Inject
+	private ISedeService sService;
+	
+	@Inject
+	private IHorarioService hService;
+	
+	private Cancha cancha;
 	List<Cancha> listaCanchas;
+	
+	private Deporte deporte;
+	List<Deporte> listaDeportes;
+	
+	private Sede sede;
+	List<Sede> listaSedes;
+	
+	private Horario horario;
+	List<Horario> listaHorarios;
 	
 	@PostConstruct
 	public void init() {
 		this.listaCanchas = new ArrayList<Cancha>();
 		this.cancha = new Cancha();
-	
+		this.listaDeportes = new ArrayList<Deporte>();
+		this.deporte = new Deporte();
+		this.listaSedes = new ArrayList<Sede>();
+		this.sede = new Sede();
+		this.listaHorarios = new ArrayList<Horario>();
+		this.horario = new Horario();
 		this.listarCancha();
+		this.listarDeporte();
+		this.listarSede();
+		this.listarHorario();
 	}
 	
 	public String nuevoCancha() {
@@ -44,6 +76,18 @@ public class CanchaController implements Serializable {
 	
 	public void listarCancha() {
 		listaCanchas = cService.listar();
+	}
+	
+	public void listarDeporte() {
+		listaDeportes = dService.listar();
+	}
+	
+	public void listarSede() {
+		listaSedes = sService.listar();
+	}
+	
+	public void listarHorario() {
+		listaHorarios = hService.listar();
 	}
 	
 	public void limpiarCancha() {
@@ -70,5 +114,54 @@ public class CanchaController implements Serializable {
 	public void setListaCanchas(List<Cancha> listaCanchas) {
 		this.listaCanchas = listaCanchas;
 	}
+
+	public Deporte getDeporte() {
+		return deporte;
+	}
+
+	public void setDeporte(Deporte deporte) {
+		this.deporte = deporte;
+	}
+
+	public List<Deporte> getListaDeportes() {
+		return listaDeportes;
+	}
+
+	public void setListaDeportes(List<Deporte> listaDeportes) {
+		this.listaDeportes = listaDeportes;
+	}
+
+	public Sede getSede() {
+		return sede;
+	}
+
+	public void setSede(Sede sede) {
+		this.sede = sede;
+	}
+
+	public List<Sede> getListaSedes() {
+		return listaSedes;
+	}
+
+	public void setListaSedes(List<Sede> listaSedes) {
+		this.listaSedes = listaSedes;
+	}
+
+	public Horario getHorario() {
+		return horario;
+	}
+
+	public void setHorario(Horario horario) {
+		this.horario = horario;
+	}
+
+	public List<Horario> getListaHorarios() {
+		return listaHorarios;
+	}
+
+	public void setListaHorarios(List<Horario> listaHorarios) {
+		this.listaHorarios = listaHorarios;
+	}
+	
 	
 }

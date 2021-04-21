@@ -9,10 +9,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.ICanchaDao;
-import pe.edu.upc.entity.Cancha;
+import pe.edu.upc.dao.IUsuarioDao;
+import pe.edu.upc.entity.Usuario;
 
-public class CanchaDaoImpl implements ICanchaDao, Serializable{
+public class UsuarioDaoImpl implements IUsuarioDao, Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="a")
@@ -21,24 +21,24 @@ public class CanchaDaoImpl implements ICanchaDao, Serializable{
 	
 	@Transactional
 	@Override
-	public void insertar(Cancha cancha) {
-		em.persist(cancha);
+	public void insertar(Usuario usuario) {
+		em.persist(usuario);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Cancha> listar() {
-		List<Cancha> lista = new ArrayList<Cancha>();
-		Query q = em.createQuery("select c from Cancha c");
-		lista = (List<Cancha>) q.getResultList();
+	public List<Usuario> listar() {
+		List<Usuario> lista = new ArrayList<Usuario>();
+		Query q = em.createQuery("select u from Usuario u");
+		lista = (List<Usuario>) q.getResultList();
 		return lista;
 	}
 	
 	@Transactional
 	@Override
-	public void eliminar(int canchaID) {
-		Cancha cancha = new Cancha();
-		cancha = em.getReference(Cancha.class, canchaID);
-		em.remove(cancha);
+	public void eliminar(int userID) {
+		Usuario usuario = new Usuario();
+		usuario = em.getReference(Usuario.class, userID);
+		em.remove(usuario);
 	}
 }
