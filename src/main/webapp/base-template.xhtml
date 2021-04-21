@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html 
+	lang="es" 
+	class="no-js" 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8" />
+		<title><ui:insert name="baseTitle">Coliseo Deportivo</ui:insert></title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500|Ubuntu+Condensed' rel='stylesheet' type='text/css' />
+		<link rel="shortcut icon" type="image/x-icon" href="resources/img/favicon.ico" />
+	
+		<h:outputStylesheet name="bootstrap-4.0.0-dist/css/bootstrap.min.css"/>
+		<h:outputStylesheet name="css/font_ico.css" />
+		<ui:insert name="baseHeadContent"></ui:insert>
+	</h:head>
+	<h:body>
+		<ui:insert name="basePageContent"></ui:insert>
+		<!--/container-->
+		<ui:insert name="baseFooterContent"></ui:insert>
+		<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<h:outputScript name="js/vendor/popper.min.js"/>
+	    <h:outputScript name="bootstrap-4.0.0-dist/js/bootstrap.min.js"/>
+	</h:body>
+</html>
