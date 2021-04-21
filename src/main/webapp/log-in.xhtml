@@ -1,0 +1,31 @@
+
+<ui:composition template="templates/base-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+		
+	<ui:define name="baseHeadContent">
+		<h:outputStylesheet name="css/base.css" />
+	</ui:define>
+	
+	<ui:define name="basePageContent">
+		<form class="form-signin text-center">
+	      <img class="mb-4" src="resources/img/logo.png" alt="" width="72" height="72"/>
+	      <h1 class="h3 mb-3 font-weight-normal text-light">Iniciar sesion</h1>
+
+	      <h:outputLabel for="inputEmail" value="Correo electronico" styleClass="control-label text-light" />
+	      <p:inputText id="inputEmail" styleClass="form-control" placeholder="Email address" value="" required="true" autofocus="true" autocomplete="off"/> 
+	       	       	
+	      <h:outputLabel for="inputPassword" value="Contrasena" styleClass="control-label mt-2 text-light" />
+	      <p:inputText id="inputPassword" styleClass="form-control" type="password" placeholder="Password" value=""/> 
+	       	
+	      <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+    	</form>
+	</ui:define>
+	
+	
+	<ui:define name="baseFooterContent"></ui:define>
+		
+</ui:composition> 

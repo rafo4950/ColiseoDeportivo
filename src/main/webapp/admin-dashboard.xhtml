@@ -1,0 +1,65 @@
+
+<ui:composition template="templates/admin-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="adminHeadContent"></ui:define>
+	
+	<ui:define name="dashboardLink">
+	  <a class="nav-link active" href="#">
+        <span data-feather="home"></span>
+        Dashboard
+      </a>
+	</ui:define>
+	
+	<ui:define name="adminPageContent">
+	  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+         <h1 class="h2">Dashboard</h1>
+       </div>
+       <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+	</ui:define>
+		
+	<ui:define name="adminFooterContent">
+		<!-- Icons -->
+	    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+	    <script>
+	      feather.replace()
+	    </script>
+	
+	    <!-- Graphs -->
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+	    <script>
+	      var ctx = document.getElementById("myChart");
+	      var myChart = new Chart(ctx, {
+	        type: 'line',
+	        data: {
+	          labels: ["8 AM - 9AM", "9 AM - 10AM", "11 AM - 12PM", "12 PM - 1PM", "3 PM - 4PM", "6 PM - 7PM"],
+	          datasets: [{
+	            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+	            lineTension: 0,
+	            backgroundColor: 'transparent',
+	            borderColor: '#007bff',
+	            borderWidth: 4,
+	            pointBackgroundColor: '#007bff'
+	          }]
+	        },
+	        options: {
+	          scales: {
+	            yAxes: [{
+	              ticks: {
+	                beginAtZero: false
+	              }
+	            }]
+	          },
+	          legend: {
+	            display: false,
+	          }
+	        }
+	      });
+	    </script>
+	</ui:define>
+		
+</ui:composition> 

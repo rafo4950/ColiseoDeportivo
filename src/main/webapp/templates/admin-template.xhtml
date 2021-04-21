@@ -1,0 +1,93 @@
+
+<ui:composition template="base-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+		
+	<ui:define name="baseHeadContent">
+		<h:outputStylesheet name="css/admin.css" />
+		<ui:insert name="adminHeadContent"></ui:insert>
+	</ui:define>
+	
+	<ui:define name="basePageContent">
+	 	<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+	      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Administrador</a>
+	      <ul class="navbar-nav px-3">
+	        <li class="nav-item text-nowrap">
+	          <a class="nav-link" href="#">Salir</a>
+	        </li>
+	      </ul>
+	    </nav>
+	   	<div class="container-fluid">
+	      <div class="row">
+	        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+	          <div class="sidebar-sticky">
+	            <ul class="nav flex-column">
+	              <li class="nav-item">
+         	        <ui:insert name="dashboardLink">
+	         	        <a class="nav-link" href="#">
+		                  <span data-feather="home"></span>
+		                  Dashboard
+		                </a>
+         	        </ui:insert>
+	              </li>
+	              <li class="nav-item">
+	             	 <ui:insert name="usuariosLink">
+         	        	<a class="nav-link" href="#">
+		                  <span data-feather="user"></span>
+		                  Usuarios
+	                	</a>
+         	        </ui:insert>
+	              </li>
+	              <li class="nav-item">
+	              	<ui:insert name="centrosLink">
+         	        	<a class="nav-link" href="#">
+		                  <span data-feather="flag"></span>
+		                  Centros deportivos
+		                </a>
+         	        </ui:insert>
+	              </li>
+	              <li class="nav-item">
+	              	<ui:insert name="canchasLink">
+         	        	<a class="nav-link" href="#">
+		                  <span data-feather="dribbble"></span>
+		                  Canchas
+		                </a>
+         	        </ui:insert>
+	              </li>
+	              <li class="nav-item">
+	              	<ui:insert name="reservasLink">
+         	        	<a class="nav-link" href="#">
+		                  <span data-feather="calendar"></span>
+		                  Reservas
+		                </a>
+         	        </ui:insert>
+	              </li>
+	              <li class="nav-item">
+	              	<ui:insert name="horariosLink">
+         	        	<a class="nav-link" href="#">
+		                  <span data-feather="clock"></span>
+		                  Horarios
+		                </a>
+         	        </ui:insert>
+	              </li>
+	            </ul>  
+	          </div>
+	        </nav>
+	
+	        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+	        	<ui:insert name="adminPageContent"></ui:insert>
+	        </main>
+	      </div>
+	    </div>
+
+	</ui:define>
+	
+	
+	<ui:define name="baseFooterContent">
+		<ui:insert name="adminFooterContent"></ui:insert>
+	</ui:define>
+		
+</ui:composition> 
