@@ -1,0 +1,67 @@
+
+<ui:composition template="templates/admin-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="adminHeadContent"></ui:define>
+	
+	<ui:define name="reservasLink">
+	  <a class="nav-link active" href="#">
+         <span data-feather="calendar"></span>
+         Reservas
+       </a>
+	</ui:define>
+	
+	<ui:define name="adminPageContent">
+		<h:form>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card form-group table-responsive box-table-class">
+						<p:dataTable id="listaReservas" var="reserva"
+							value="#{reservaController.listaReservas}"
+							styleClass="table table-bordered"
+							emptyMessage="No existen registros" 
+							>
+							
+							<f:facet name="header">
+					            <div class="d-flex justify-content-between align-items-center">
+					                Reservas
+					            </div>
+					        </f:facet>
+					        
+					        <p:column headerText="Fecha" sortBy="#{reserva.reservaFecha}">
+								<h:outputText  value="#{reserva.reservaFecha}">
+									<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+								</h:outputText>
+							</p:column>
+					        
+					        <p:column headerText="Usuario" sortBy="#{reserva.usuario.userCorreo}">
+								<h:outputText value="#{reserva.usuario.userCorreo}" />
+							</p:column>
+
+							<p:column headerText="Sede" sortBy="#{reserva.cancha.sede.sedeNombre}">
+								<h:outputText value="#{reserva.cancha.sede.sedeNombre}" />
+							</p:column>
+							
+							<p:column headerText="Deporte" sortBy="#{reserva.cancha.deporte.sportNombre}">
+								<h:outputText value="#{reserva.cancha.deporte.sportNombre}" />
+							</p:column>
+			
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton styleClass="ui-button-warning rounded-button" icon="pi pi-trash" 
+									actionListener="#{reservaController.eliminar(reserva)}" update="listaReservas" />	
+							</p:column>
+
+						</p:dataTable>
+					</div>
+				</div>				
+			</div>									
+		</h:form>
+	</ui:define>
+		
+	<ui:define name="adminFooterContent"></ui:define>
+		
+</ui:composition> 
