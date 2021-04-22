@@ -1,0 +1,56 @@
+
+<ui:composition template="templates/admin-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="adminHeadContent"></ui:define>
+	
+	<ui:define name="deportesLink">
+	  <a class="nav-link active" href="#">
+         <span data-feather="dribbble"></span>
+         Deportes
+       </a>
+	</ui:define>
+	
+	<ui:define name="adminPageContent">
+		<h:form>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card form-group table-responsive box-table-class">
+						<p:dataTable id="listaDeportes" var="deporte"
+							value="#{deporteController.listaDeportes}"
+							styleClass="table table-bordered"
+							emptyMessage="No existen registros" 
+							>
+							
+							<f:facet name="header">
+					            <div class="d-flex justify-content-between align-items-center">
+					                Deportes
+					                <div>
+										<p:commandButton value="Crear deporte" actionListener="#{deporteController.nuevoDeporte()}" action="admin-deportes-crear?faces-redirect=true" styleClass="p-mt-3"  ajax="false"/>
+									</div>
+					            </div>
+					        </f:facet>
+
+							<p:column headerText="Nombre" sortBy="#{deporte.sportNombre}">
+								<h:outputText value="#{deporte.sportNombre}" />
+							</p:column>
+
+							<p:column headerText="Operación">
+								<p:commandButton styleClass="ui-button-warning rounded-button" icon="pi pi-trash" 
+									actionListener="#{deporteController.eliminar(deporte)}" update="listaDeportes" />
+							</p:column>
+
+						</p:dataTable>
+					</div>
+				</div>				
+			</div>									
+		</h:form>
+	</ui:define>
+		
+	<ui:define name="adminFooterContent"></ui:define>
+		
+</ui:composition> 

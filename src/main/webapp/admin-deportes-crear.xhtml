@@ -1,0 +1,42 @@
+
+<ui:composition template="templates/admin-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="adminHeadContent"></ui:define>
+	
+	<ui:define name="centrosLink">
+	  <a class="nav-link active" href="admin-deportes.xhtml">
+        <span data-feather="dribbble"></span>
+        Deportes
+      </a>
+	</ui:define>
+	
+	<ui:define name="adminPageContent">
+ 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+         <h1 class="h2">Crear deporte</h1>
+       	</div>
+       	<div class="card">
+		    <h:form>
+		        <div class="ui-fluid p-formgrid p-grid">
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="nombre" value="Nombre"/>
+		                <p:inputText autocomplete="off" id="nombre"
+							styleClass="form-control"
+							value="#{deporteController.deporte.sportNombre}" maxlength="30"
+							required="true" />
+		            </div>
+		        </div>
+		        <div>
+					<p:commandButton value="Crear" action="admin-deportes?faces-redirect=true" actionListener="#{deporteController.insertar()}" styleClass="mb-3 ml-4"  ajax="false"/>
+				</div>
+		    </h:form>
+		</div>
+	</ui:define>
+		
+	<ui:define name="adminFooterContent"></ui:define>
+		
+</ui:composition> 
