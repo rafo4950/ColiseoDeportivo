@@ -53,5 +53,10 @@ private static final long serialVersionUID = 1L;
 	public void setSportNombre(String sportNombre) {
 		this.sportNombre = sportNombre;
 	}
+	
+	@Override
+	public String toString() {
+	    return String.format("%s[id=%d]", getClass().getSimpleName(), getSportID());
+	}
 
 }

@@ -15,7 +15,7 @@ import pe.edu.upc.entity.Estado;
 public class EstadoDaoImpl implements IEstadoDao, Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	@PersistenceContext(unitName="a")
+	@PersistenceContext(unitName="b")
 	private EntityManager em;
 	
 	

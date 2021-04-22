@@ -15,7 +15,7 @@ import pe.edu.upc.entity.Usuario;
 public class UsuarioDaoImpl implements IUsuarioDao, Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	@PersistenceContext(unitName="a")
+	@PersistenceContext(unitName="")
 	private EntityManager em;
 	
 	

@@ -33,8 +33,8 @@ private static final long serialVersionUID = 1L;
 	@Column(name="userCorreo", nullable=false, length=50)
 	private String userCorreo;
 	
-	@Column(name="userContraseña", nullable=false, length=30)
-	private String userContraseña;
+	@Column(name="userContraseï¿½a", nullable=false, length=30)
+	private String userContrasena;
 
 	public Usuario() {
 		super();
@@ -42,7 +42,7 @@ private static final long serialVersionUID = 1L;
 	}
 
 	public Usuario(int userID, String userNombre, String userPrimerApellido, String userSegundoApellido,
-			Date userFechaNacimiento, String userCorreo, String userContraseña) {
+			Date userFechaNacimiento, String userCorreo, String userContrasena) {
 		super();
 		this.userID = userID;
 		this.userNombre = userNombre;
@@ -50,7 +50,7 @@ private static final long serialVersionUID = 1L;
 		this.userSegundoApellido = userSegundoApellido;
 		this.userFechaNacimiento = userFechaNacimiento;
 		this.userCorreo = userCorreo;
-		this.userContraseña = userContraseña;
+		this.userContrasena = userContrasena;
 	}
 
 	public int getUserID() {
@@ -102,12 +102,12 @@ private static final long serialVersionUID = 1L;
 	}
 
 
-	public String getUserContraseña() {
-		return userContraseña;
+	public String getUserContrasena() {
+		return userContrasena;
 	}
 
-	public void setUserContraseña(String userContraseña) {
-		this.userContraseña = userContraseña;
+	public void setUserContrasena(String userContrasena) {
+		this.userContrasena = userContrasena;
 	}
 
 }
