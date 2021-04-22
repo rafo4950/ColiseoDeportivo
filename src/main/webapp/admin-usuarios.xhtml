@@ -1,0 +1,66 @@
+
+<ui:composition template="templates/admin-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="adminHeadContent"></ui:define>
+	
+	<ui:define name="usuariosLink">
+	  <a class="nav-link active" href="#">
+         <span data-feather="user"></span>
+         Usuarios
+       </a>
+	</ui:define>
+	
+	<ui:define name="adminPageContent">
+		<h:form>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card form-group table-responsive box-table-class">
+						<p:dataTable id="listaUsuarios" var="usuario"
+							value="#{usuarioController.listaUsuarios}"
+							styleClass="table table-bordered"
+							emptyMessage="No existen registros" 
+							>
+							
+							<f:facet name="header">
+					            <div class="d-flex justify-content-between align-items-center">
+					                Usuarios
+					            </div>
+					        </f:facet>
+
+							<p:column headerText="Nombre" sortBy="#{usuario.userNombre}">
+								<h:outputText value="#{usuario.userNombre}" />
+							</p:column>
+							
+							<p:column headerText="P.Apellido" sortBy="#{usuario.userPrimerApellido}">
+								<h:outputText value="#{usuario.userPrimerApellido}" />
+							</p:column>
+							
+							<p:column headerText="S.Apellido" sortBy="#{usuario.userSegundoApellido}">
+								<h:outputText value="#{usuario.userSegundoApellido}" />
+							</p:column>
+							
+							<p:column headerText="Correo" sortBy="#{usuario.userCorreo}">
+								<h:outputText value="#{usuario.userCorreo}" />
+							</p:column>
+							
+
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton styleClass="ui-button-warning rounded-button" icon="pi pi-trash" 
+									actionListener="#{usuarioController.eliminar(usuario)}" update="listaUsuarios" />	
+							</p:column>
+
+						</p:dataTable>
+					</div>
+				</div>				
+			</div>									
+		</h:form>
+	</ui:define>
+		
+	<ui:define name="adminFooterContent"></ui:define>
+		
+</ui:composition> 
