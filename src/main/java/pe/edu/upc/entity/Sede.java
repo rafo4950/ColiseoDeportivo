@@ -54,5 +54,9 @@ private static final long serialVersionUID = 1L;
 		this.sedeNombre = sedeNombre;
 	}
 
+	@Override
+	public String toString() {
+	    return String.format("%s[id=%d]", getClass().getSimpleName(), getSedeID());
+	}
 	
 }

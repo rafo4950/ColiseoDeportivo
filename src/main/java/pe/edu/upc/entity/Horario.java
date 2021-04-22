@@ -68,5 +68,10 @@ private static final long serialVersionUID = 1L;
 		this.horarioFin = horarioFin;
 	}
 	
+	@Override
+	public String toString() {
+	    return String.format("%s[id=%d]", getClass().getSimpleName(), getHorarioID());
+	}
+	
 	
 }

@@ -23,11 +23,29 @@ public class HorarioController implements Serializable {
 	private Horario horario;
 	List<Horario> listaHorarios;
 	
+	List<String> opcionesInicio;
+	List<String> opcionesFin;
+	
 	@PostConstruct
 	public void init() {
 		this.listaHorarios = new ArrayList<Horario>();
 		this.horario = new Horario();
 		this.listar();
+
+		opcionesInicio = new ArrayList<>();
+		opcionesFin = new ArrayList<>();
+		for (int i = 6; i < 13; i++) {
+			String hour = i + " AM";
+			opcionesInicio.add(hour);
+			opcionesFin.add(hour);
+		}
+		
+		for (int i = 1; i < 13; i++) {
+			String hour = i + " PM";
+			opcionesInicio.add(hour);
+			opcionesFin.add(hour);
+		}
+		
 	}
 	
 	public String nuevoHorario() {
@@ -68,6 +86,24 @@ public class HorarioController implements Serializable {
 	public void setListaHorarios(List<Horario> listaHorarios) {
 		this.listaHorarios = listaHorarios;
 	}
+	
+	public List<String> getOpcionesInicio() {
+		return opcionesInicio;
+	}
+
+	public void setOpcionesInicio(List<String> opcionesInicio) {
+		this.opcionesInicio = opcionesInicio;
+	}
+	
+	public List<String> getOpcionesFin() {
+		return opcionesFin;
+	}
+
+	public void setOpcionesFin(List<String> opcionesFin) {
+		this.opcionesFin = opcionesFin;
+	}
+	
+	
 
 	
 }

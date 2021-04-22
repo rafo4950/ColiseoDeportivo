@@ -15,7 +15,7 @@ import pe.edu.upc.entity.Cancha;
 public class CanchaDaoImpl implements ICanchaDao, Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	@PersistenceContext(unitName="a")
+	@PersistenceContext(unitName="b")
 	private EntityManager em;
 	
 	

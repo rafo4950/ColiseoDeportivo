@@ -15,7 +15,7 @@ import pe.edu.upc.entity.Sede;
 public class SedeDaoImpl implements ISedeDao, Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	@PersistenceContext(unitName="a")
+	@PersistenceContext(unitName="b")
 	private EntityManager em;
 	
 	

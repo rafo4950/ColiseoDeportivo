@@ -30,9 +30,8 @@ public class SedeController implements Serializable {
 		this.listar();
 	}
 	
-	public String nuevoSede() {
+	public void nuevoSede() {
 		this.setSede(new Sede());
-		return "sede.xhtml";
 	}
 	
 	public void insertar() {

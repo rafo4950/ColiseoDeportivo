@@ -2,6 +2,7 @@ package pe.edu.upc.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,16 +20,22 @@ public class Cancha implements Serializable{
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private int canchaID;
 	
-	@ManyToOne
-	@JoinColumn(name="sportID", nullable = false)
+	@Column(name="numeroCancha", nullable=false)
+	private int numeroCancha;
+	
+	@Column(name="precioCancha", nullable=false)
+	private int precioCancha;
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name="sportID")
 	private Deporte deporte;
 	
-	@ManyToOne
-	@JoinColumn(name="sedeID", nullable = false)
+	@ManyToOne(optional = false)
+	@JoinColumn(name="sedeID")
 	private Sede sede;
 	
-	@ManyToOne
-	@JoinColumn(name="horarioID", nullable = false)
+	@ManyToOne(optional = false)
+	@JoinColumn(name="horarioID")
 	private Horario horario;
 
 	public Cancha() {
@@ -36,9 +43,11 @@ public class Cancha implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cancha(int canchaID, Deporte deporte, Sede sede, Horario horario) {
+	public Cancha(int canchaID, int numeroCancha, int precioCancha, Deporte deporte, Sede sede, Horario horario) {
 		super();
 		this.canchaID = canchaID;
+		this.precioCancha = precioCancha;
+		this.numeroCancha = numeroCancha;
 		this.deporte = deporte;
 		this.sede = sede;
 		this.horario = horario;
@@ -76,4 +85,24 @@ public class Cancha implements Serializable{
 		this.horario = horario;
 	}
 	
+	public int getNumeroCancha() {
+		return numeroCancha;
+	}
+
+	public void setNumeroCancha(int numeroCancha) {
+		this.numeroCancha = numeroCancha;
+	}
+	
+	public int getPrecioCancha() {
+		return precioCancha;
+	}
+
+	public void setPrecioCancha(int precioCancha) {
+		this.precioCancha = precioCancha;
+	}
+	
+	@Override
+	public String toString() {
+	    return String.format("%s[id=%d]", getClass().getSimpleName(), getCanchaID());
+	}
 }

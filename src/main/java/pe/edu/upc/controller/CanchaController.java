@@ -2,7 +2,10 @@ package pe.edu.upc.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -62,11 +65,13 @@ public class CanchaController implements Serializable {
 		this.listarDeporte();
 		this.listarSede();
 		this.listarHorario();
+		
+
 	}
+
 	
-	public String nuevoCancha() {
+	public void nuevoCancha() {
 		this.setCancha(new Cancha());
-		return "cancha.xhtml";
 	}
 	
 	public void insertar() {
@@ -162,6 +167,4 @@ public class CanchaController implements Serializable {
 	public void setListaHorarios(List<Horario> listaHorarios) {
 		this.listaHorarios = listaHorarios;
 	}
-	
-	
 }
