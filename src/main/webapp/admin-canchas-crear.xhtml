@@ -1,0 +1,74 @@
+<ui:composition template="templates/admin-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="adminHeadContent"></ui:define>
+	
+	<ui:define name="canchasLink">
+	  <a class="nav-link active" href="admin-canchas.xhtml">
+        <span data-feather="framer"></span>
+        Canchas
+      </a>
+	</ui:define>
+	
+	<ui:define name="adminPageContent">
+ 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+         <h1 class="h2">Crear cancha</h1>
+       	</div>
+       	<div class="card">
+		    <h:form>
+		        <div class="ui-fluid p-formgrid p-grid">
+		        	<div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="numero" value="Numero"/>
+		                <p:inputText autocomplete="off" id="numero"
+							styleClass="form-control"
+							value="#{canchaController.cancha.numeroCancha}" maxlength="30"
+							required="true" />
+		            </div>
+		            
+		        	<div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="precio" value="Precio"/>
+		                <p:inputNumber  id="precio"
+							styleClass="form-control"
+							value="#{canchaController.cancha.precioCancha}" symbol=" Soles"
+                                symbolPosition="s" decimalSeparator="," thousandSeparator="."
+							required="true" />
+		            </div>
+		            
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="deporte" value="Deporte"/>
+		                <p:selectOneMenu id="deporte" value="#{canchaController.cancha.deporte}" required="true" converter="omnifaces.SelectItemsConverter">
+                    		<f:selectItems value="#{canchaController.listaDeportes}" var="d" 
+								itemLabel="#{d.sportNombre}" itemValue="#{d}"/>
+		                </p:selectOneMenu>
+		            </div>
+		
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="sede" value="Sede"/>
+		                <p:selectOneMenu id="sede" value="#{canchaController.cancha.sede}" required="true" converter="omnifaces.SelectItemsConverter">
+                    		<f:selectItems value="#{canchaController.listaSedes}" var="s" 
+								itemLabel="#{s.sedeNombre}" itemValue="#{s}"/>
+		                </p:selectOneMenu>
+		            </div>
+		
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="horario" value="Horario"/>
+		                <p:selectOneMenu id="horario" value="#{canchaController.cancha.horario}" required="true" converter="omnifaces.SelectItemsConverter">
+                    		<f:selectItems value="#{canchaController.listaHorarios}" var="h" 
+								itemLabel="#{h.horarioInicio} - #{h.horarioFin}" itemValue="#{h}"/>
+		                </p:selectOneMenu>
+		            </div>
+		        </div>
+		        <div>
+					<p:commandButton value="Crear" action="admin-canchas?faces-redirect=true" actionListener="#{canchaController.insertar()}" styleClass="mb-3 ml-4"  ajax="false"/>
+				</div>
+		    </h:form>
+		</div>
+	</ui:define>
+		
+	<ui:define name="adminFooterContent"></ui:define>
+		
+</ui:composition> 
