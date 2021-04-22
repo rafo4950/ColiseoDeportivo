@@ -16,7 +16,7 @@
 	      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Administrador</a>
 	      <ul class="navbar-nav px-3">
 	        <li class="nav-item text-nowrap">
-	          <a class="nav-link" href="#">Salir</a>
+	          <a class="nav-link" href="admin-log-in.xhtml">Salir</a>
 	        </li>
 	      </ul>
 	    </nav>
@@ -27,7 +27,7 @@
 	            <ul class="nav flex-column">
 	              <li class="nav-item">
          	        <ui:insert name="dashboardLink">
-	         	        <a class="nav-link" href="#">
+	         	        <a class="nav-link" href="admin-dashboard.xhtml">
 		                  <span data-feather="home"></span>
 		                  Dashboard
 		                </a>
@@ -35,7 +35,7 @@
 	              </li>
 	              <li class="nav-item">
 	             	 <ui:insert name="usuariosLink">
-         	        	<a class="nav-link" href="#">
+         	        	<a class="nav-link" href="admin-usuarios.xhtml">
 		                  <span data-feather="user"></span>
 		                  Usuarios
 	                	</a>
@@ -43,23 +43,31 @@
 	              </li>
 	              <li class="nav-item">
 	              	<ui:insert name="centrosLink">
-         	        	<a class="nav-link" href="#">
+         	        	<a class="nav-link" href="admin-sedes.xhtml">
 		                  <span data-feather="flag"></span>
 		                  Centros deportivos
 		                </a>
          	        </ui:insert>
 	              </li>
 	              <li class="nav-item">
-	              	<ui:insert name="canchasLink">
-         	        	<a class="nav-link" href="#">
+	              	<ui:insert name="deportesLink">
+         	        	<a class="nav-link" href="admin-deportes.xhtml">
 		                  <span data-feather="dribbble"></span>
+		                  Desportes
+		                </a>
+         	        </ui:insert>
+	              </li>
+	              <li class="nav-item">
+	              	<ui:insert name="canchasLink">
+         	        	<a class="nav-link" href="admin-canchas.xhtml">
+		                  <span data-feather="framer"></span>
 		                  Canchas
 		                </a>
          	        </ui:insert>
 	              </li>
 	              <li class="nav-item">
 	              	<ui:insert name="reservasLink">
-         	        	<a class="nav-link" href="#">
+         	        	<a class="nav-link" href="admin-reservas.xhtml">
 		                  <span data-feather="calendar"></span>
 		                  Reservas
 		                </a>
@@ -67,7 +75,7 @@
 	              </li>
 	              <li class="nav-item">
 	              	<ui:insert name="horariosLink">
-         	        	<a class="nav-link" href="#">
+         	        	<a class="nav-link" href="admin-horarios.xhtml">
 		                  <span data-feather="clock"></span>
 		                  Horarios
 		                </a>
@@ -87,6 +95,11 @@
 	
 	
 	<ui:define name="baseFooterContent">
+		<!-- Icons -->
+	    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+	    <script>
+	      feather.replace()
+	    </script>
 		<ui:insert name="adminFooterContent"></ui:insert>
 	</ui:define>
 		
