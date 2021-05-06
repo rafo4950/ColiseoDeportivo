@@ -93,11 +93,5 @@ private static final long serialVersionUID = 1L;
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-	    return String.format("%s[id=%d]", getClass().getSimpleName(), getDeporteID());
-	}
-	
-	
+		
 }

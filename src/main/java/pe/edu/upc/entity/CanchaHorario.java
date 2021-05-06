@@ -42,6 +42,9 @@ public class CanchaHorario implements Serializable{
 	public CanchaHorario() {
 		super();
 		// TODO Auto-generated constructor stub
+		this.cancha = new Cancha();
+		this.horario = new Horario();
+		this.deporte = new Deporte();
 	}
 
 	public CanchaHorario(CanchaHorarioKey id, float canchahorarioPrecio) {
@@ -95,10 +98,7 @@ public class CanchaHorario implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cancha == null) ? 0 : cancha.hashCode());
 		result = prime * result + Float.floatToIntBits(canchahorarioPrecio);
-		result = prime * result + ((deporte == null) ? 0 : deporte.hashCode());
-		result = prime * result + ((horario == null) ? 0 : horario.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -112,22 +112,7 @@ public class CanchaHorario implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		CanchaHorario other = (CanchaHorario) obj;
-		if (cancha == null) {
-			if (other.cancha != null)
-				return false;
-		} else if (!cancha.equals(other.cancha))
-			return false;
 		if (Float.floatToIntBits(canchahorarioPrecio) != Float.floatToIntBits(other.canchahorarioPrecio))
-			return false;
-		if (deporte == null) {
-			if (other.deporte != null)
-				return false;
-		} else if (!deporte.equals(other.deporte))
-			return false;
-		if (horario == null) {
-			if (other.horario != null)
-				return false;
-		} else if (!horario.equals(other.horario))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -136,8 +121,5 @@ public class CanchaHorario implements Serializable{
 			return false;
 		return true;
 	}
-
-	
-
 	
 }

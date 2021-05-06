@@ -112,11 +112,9 @@ public class Cancha implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((canchaDeportes == null) ? 0 : canchaDeportes.hashCode());
 		result = prime * result + canchaID;
 		result = prime * result + ((canchaNombre == null) ? 0 : canchaNombre.hashCode());
 		result = prime * result + ((centrodeportivo == null) ? 0 : centrodeportivo.hashCode());
-		result = prime * result + ((horarios == null) ? 0 : horarios.hashCode());
 		return result;
 	}
 
@@ -129,11 +127,6 @@ public class Cancha implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Cancha other = (Cancha) obj;
-		if (canchaDeportes == null) {
-			if (other.canchaDeportes != null)
-				return false;
-		} else if (!canchaDeportes.equals(other.canchaDeportes))
-			return false;
 		if (canchaID != other.canchaID)
 			return false;
 		if (canchaNombre == null) {
@@ -146,14 +139,8 @@ public class Cancha implements Serializable{
 				return false;
 		} else if (!centrodeportivo.equals(other.centrodeportivo))
 			return false;
-		if (horarios == null) {
-			if (other.horarios != null)
-				return false;
-		} else if (!horarios.equals(other.horarios))
-			return false;
 		return true;
 	}
 
-	
 	
 }

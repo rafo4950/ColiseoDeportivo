@@ -23,7 +23,8 @@
 		        <div class="ui-fluid p-formgrid p-grid">
 		        	<div class="p-field p-col-12 p-4">
 		                <p:outputLabel for="cancha" value="Cancha"/>
-		                <p:selectOneMenu id="cancha" value="#{canchaHorarioController.cancha}" required="true" converter="omnifaces.SelectItemsConverter">
+		                <p:selectOneMenu id="cancha" value="#{canchaHorarioController.canchahorario.cancha}" converter="omnifaces.SelectItemsConverter">
+            		        <f:selectItem itemLabel="Seleccionar uno" itemValue=""/>
                     		<f:selectItems value="#{canchaHorarioController.listaCanchas}" var="c" 
 								itemLabel="#{c.canchaNombre}" itemValue="#{c}"/>
 								<p:ajax update="deporte" event="change" listener="#{canchaHorarioController.handleCancha()}"/>
@@ -32,8 +33,9 @@
 	
 		        	<div class="p-field p-col-12 p-4">
 		                <p:outputLabel for="deporte" value="Deporte"/>
-		                <p:selectOneMenu id="deporte" value="#{canchaHorarioController.deporte}" required="true" converter="omnifaces.SelectItemsConverter">
-                    		<f:selectItems value="#{canchaHorarioController.cancha.canchaDeportes}" var="d" 
+		                <p:selectOneMenu id="deporte" value="#{canchaHorarioController.canchahorario.deporte}" converter="omnifaces.SelectItemsConverter">
+                    		<f:selectItem itemLabel="Seleccionar uno" itemValue=""/>
+                    		<f:selectItems value="#{canchaHorarioController.canchahorario.cancha.canchaDeportes}" var="d" 
 								itemLabel="#{d.deporteNombre}" itemValue="#{d}"/>
 							<p:ajax update="horarios" event="change" listener="#{canchaHorarioController.handleDeporte()}"/>
 		                </p:selectOneMenu>
@@ -41,15 +43,25 @@
 		            
 		 			<div class="p-field p-col-12 p-4">
 		                <p:outputLabel for="horarios" value="Horarios"/>
-		                <p:selectOneMenu id="horarios" value="#{canchaHorarioController.horario}" required="true" converter="omnifaces.SelectItemsConverter">
+		                <p:selectOneMenu id="horarios" value="#{canchaHorarioController.canchahorario.horario}" converter="omnifaces.SelectItemsConverter">
+                 		     <f:selectItem itemLabel="Seleccionar uno" itemValue=""/>
                     		<f:selectItems value="#{canchaHorarioController.listaHorarios}" var="h" 
 								itemLabel="#{h.horarioInicio} - #{h.horarioFin}" itemValue="#{h}"/>
 		                </p:selectOneMenu>
 		            </div>
 		            
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="precio" value="Precio"/>
+		                <p:inputNumber  id="precio"
+							styleClass="form-control"
+							value="#{canchaHorarioController.canchahorario.canchahorarioPrecio}" symbol=" Soles"
+                                symbolPosition="s" decimalSeparator="," thousandSeparator="."
+							required="true" />
+		            </div>
+		            
 		        </div>
 		        <div>
-					<p:commandButton value="Crear" action="admin-canchas?faces-redirect=true" actionListener="#{canchaController.insertar()}" styleClass="mb-3 ml-4"  ajax="false"/>
+					<p:commandButton value="Crear" action="admin-canchas-horarios?faces-redirect=true" actionListener="#{canchaHorarioController.insertar()}" styleClass="mb-3 ml-4"  ajax="false"/>
 				</div>
 		    </h:form>
 		</div>

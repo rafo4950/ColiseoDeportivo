@@ -6,12 +6,11 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.context.Flash;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entity.CanchaHorario;
+import pe.edu.upc.entity.CanchaHorarioKey;
 import pe.edu.upc.entity.Deporte;
 import pe.edu.upc.service.ICanchaHorarioService;
 import pe.edu.upc.entity.Cancha;
@@ -41,7 +40,7 @@ public class CanchaHorarioController implements Serializable {
 	private List<Horario> listaHorarios;
 	
 	private List<Horario> listaHorariosDisponibles;
-		
+			
 	private int precioCancha;
 	
 	private Deporte deporte;
@@ -54,21 +53,24 @@ public class CanchaHorarioController implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-		this.canchahorario = new CanchaHorario();
 		this.listaCanchas = new ArrayList<Cancha>();
-		this.horario = new Horario();
-		this.deporte = new Deporte();
 		this.listarCanchas();
 		this.listarCanchaHorario();
 		this.listarHorarios();
 	}
 	
 	public void nuevoCanchaHorario() {
+		this.listarCanchas();
 		this.setCanchahorario(new CanchaHorario());
 	}
 	
 	public void insertar() {
-		cahService.insertar(canchahorario);
+		cahService.insertar(new CanchaHorario(
+				new CanchaHorarioKey(
+				canchahorario.getCancha().getCanchaID(),
+				canchahorario.getHorario().getHorarioID(),
+				canchahorario.getDeporte().getDeporteID()
+				), canchahorario.getCanchahorarioPrecio()));
 		limpiarCanchaHorario();
 	}
 	
@@ -97,25 +99,23 @@ public class CanchaHorarioController implements Serializable {
 	}
 	
 	public void handleCancha() {
-		deporte = new Deporte();
-		horario = new Horario();
+		cancha = canchahorario.getCancha();
 		precioCancha = 0;
 		listaHorariosDisponibles = new ArrayList<>();
 		if (cancha.getCanchaDeportes().size() > 0) {
-			deporte = (new ArrayList<Deporte>(cancha.getCanchaDeportes())).get(0);
+			canchahorario.setDeporte((new ArrayList<Deporte>(cancha.getCanchaDeportes())).get(0));
 			listaHorariosDisponibles = listarDisponiblesHorariosPorDeporte();
 			if (listaHorariosDisponibles.size() > 0) {
-				horario = listaHorariosDisponibles.get(0);
+				canchahorario.setHorario(listaHorariosDisponibles.get(0));
 			}
 		}
 	}
 	
 	public void handleDeporte() {
 		precioCancha = 0;
-		horario = new Horario();
 		listaHorariosDisponibles = listarDisponiblesHorariosPorDeporte();
 		if (listaHorariosDisponibles.size() > 0) {
-			horario = listaHorariosDisponibles.get(0);
+			canchahorario.setHorario(listaHorariosDisponibles.get(0));
 		}
 	}
 	
