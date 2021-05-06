@@ -29,6 +29,9 @@
 							<f:facet name="header">
 					            <div class="d-flex justify-content-between align-items-center">
 					                Reservas
+					                <div>
+										<p:commandButton value="Crear Reserva" actionListener="#{reservaController.nuevoReserva()}" action="admin-reservas-crear?faces-redirect=true" styleClass="p-mt-3"  ajax="false"/>
+									</div>
 					            </div>
 					        </f:facet>
 					        
