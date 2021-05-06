@@ -23,17 +23,35 @@
 		        <div class="ui-fluid p-formgrid p-grid">
 		        	<div class="p-field p-col-12 p-4">
 		                <p:outputLabel for="usuarios" value="Usuarios"/>
-		                <p:selectOneMenu id="usuarios" value="#{reservaController.cliente.usuario}" required="true" converter="omnifaces.SelectItemsConverter">
+		                <p:selectOneMenu id="usuarios" value="#{reservaController.reserva.usuario}" required="true" converter="omnifaces.SelectItemsConverter">
                     		<f:selectItems value="#{usuarioController.listaUsuarios}" var="u" 
 								itemLabel="#{u.userCorreo}" itemValue="#{u}"/>
 		                </p:selectOneMenu>
 		            </div>
 	
+					<div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="fecha" value="Fecha Reserva" styleClass="control-label"/>
+		                <p:calendar id="fecha" pattern="dd/MM/yyyy"
+							value="#{reservaController.reserva.reservaFecha}" showOn="button"
+							timeZone="UTC" required="true">
+						</p:calendar>
+		            </div>
+		            
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="cancha" value="Cancha"/>
+		                <p:selectOneMenu id="cancha" value="#{reservaController.reserva.canchahorario}" converter="omnifaces.SelectItemsConverter">
+            		        <f:selectItem itemLabel="Seleccionar uno" itemValue=""/>
+                    		<f:selectItems value="#{reservaController.listaCanchaHorarios}" var="l" 
+								itemLabel="#{l.cancha.canchaNombre}: #{l.horario.horarioInicio} - #{l.horario.horarioFin}" itemValue="#{l}"/>
+		                </p:selectOneMenu>
+		            </div>
+		            
+		            
 		        	
 		            
 		        </div>
 		        <div>
-					<p:commandButton value="Crear" action="admin-canchas?faces-redirect=true" actionListener="#{canchaController.insertar()}" styleClass="mb-3 ml-4"  ajax="false"/>
+					<p:commandButton value="Crear" action="admin-reservas?faces-redirect=true" actionListener="#{reservaController.insertar()}" styleClass="mb-3 ml-4"  ajax="false"/>
 				</div>
 		    </h:form>
 		</div>

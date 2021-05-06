@@ -48,10 +48,6 @@
 							<p:column headerText="Fin">
 								<h:outputText value="#{canchahorario.horario.horarioFin}" />
 							</p:column>
-							
-							<p:column headerText="Deporte">
-								<h:outputText value="#{canchahorario.deporte.deporteNombre}" />
-							</p:column>
 					        
 					        <p:column headerText="Precio">
 								<h:outputText value="#{canchahorario.canchahorarioPrecio}" />
@@ -60,7 +56,7 @@
 
 							<p:column headerText="Operación" exportable="false">
 								<p:commandButton styleClass="ui-button-warning rounded-button" icon="pi pi-trash" 
-									actionListener="#{canchaHorarioController.eliminar(canchahorario)}" />	
+									actionListener="#{canchaHorarioController.eliminar(canchahorario)}" update="listaCanchas" />	
 							</p:column>
 						</p:dataTable>
 					</div>

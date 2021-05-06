@@ -27,17 +27,6 @@
             		        <f:selectItem itemLabel="Seleccionar uno" itemValue=""/>
                     		<f:selectItems value="#{canchaHorarioController.listaCanchas}" var="c" 
 								itemLabel="#{c.canchaNombre}" itemValue="#{c}"/>
-								<p:ajax update="deporte" event="change" listener="#{canchaHorarioController.handleCancha()}"/>
-		                </p:selectOneMenu>
-		            </div>
-	
-		        	<div class="p-field p-col-12 p-4">
-		                <p:outputLabel for="deporte" value="Deporte"/>
-		                <p:selectOneMenu id="deporte" value="#{canchaHorarioController.canchahorario.deporte}" converter="omnifaces.SelectItemsConverter">
-                    		<f:selectItem itemLabel="Seleccionar uno" itemValue=""/>
-                    		<f:selectItems value="#{canchaHorarioController.canchahorario.cancha.canchaDeportes}" var="d" 
-								itemLabel="#{d.deporteNombre}" itemValue="#{d}"/>
-							<p:ajax update="horarios" event="change" listener="#{canchaHorarioController.handleDeporte()}"/>
 		                </p:selectOneMenu>
 		            </div>
 		            

@@ -45,12 +45,16 @@
 								<h:outputText value="#{reserva.usuario.userCorreo}" />
 							</p:column>
 
-							<p:column headerText="Sede" sortBy="#{reserva.cancha.sede.sedeNombre}">
-								<h:outputText value="#{reserva.cancha.sede.sedeNombre}" />
+							<p:column headerText="Cancha" sortBy="#{reserva.canchahorario.cancha.canchaNombre}">
+								<h:outputText value="#{reserva.canchahorario.cancha.canchaNombre}" />
 							</p:column>
 							
-							<p:column headerText="Deporte" sortBy="#{reserva.cancha.deporte.sportNombre}">
-								<h:outputText value="#{reserva.cancha.deporte.sportNombre}" />
+							<p:column headerText="Horario Inicio" sortBy="#{reserva.canchahorario.horario.horarioInicio}">
+								<h:outputText value="#{reserva.canchahorario.horario.horarioInicio}" />
+							</p:column>
+							
+							<p:column headerText="Horario Fin" sortBy="#{reserva.canchahorario.horario.horarioFin}">
+								<h:outputText value="#{reserva.canchahorario.horario.horarioFin}" />
 							</p:column>
 			
 							<p:column headerText="Operación" exportable="false">
