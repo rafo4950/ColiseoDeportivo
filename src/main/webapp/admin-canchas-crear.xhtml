@@ -22,44 +22,32 @@
 		    <h:form>
 		        <div class="ui-fluid p-formgrid p-grid">
 		        	<div class="p-field p-col-12 p-4">
-		                <p:outputLabel for="numero" value="Numero"/>
-		                <p:inputText autocomplete="off" id="numero"
+		                <p:outputLabel for="nombre" value="Nombre"/>
+		                <p:inputText autocomplete="off" id="nombre"
 							styleClass="form-control"
-							value="#{canchaController.cancha.numeroCancha}" maxlength="30"
+							value="#{canchaController.cancha.canchaNombre}" maxlength="30"
 							required="true" />
-		            </div>
-		            
-		        	<div class="p-field p-col-12 p-4">
-		                <p:outputLabel for="precio" value="Precio"/>
-		                <p:inputNumber  id="precio"
-							styleClass="form-control"
-							value="#{canchaController.cancha.precioCancha}" symbol=" Soles"
-                                symbolPosition="s" decimalSeparator="," thousandSeparator="."
-							required="true" />
-		            </div>
-		            
-		            <div class="p-field p-col-12 p-4">
-		                <p:outputLabel for="deporte" value="Deporte"/>
-		                <p:selectOneMenu id="deporte" value="#{canchaController.cancha.deporte}" required="true" converter="omnifaces.SelectItemsConverter">
-                    		<f:selectItems value="#{canchaController.listaDeportes}" var="d" 
-								itemLabel="#{d.sportNombre}" itemValue="#{d}"/>
-		                </p:selectOneMenu>
 		            </div>
 		
 		            <div class="p-field p-col-12 p-4">
 		                <p:outputLabel for="sede" value="Sede"/>
-		                <p:selectOneMenu id="sede" value="#{canchaController.cancha.sede}" required="true" converter="omnifaces.SelectItemsConverter">
-                    		<f:selectItems value="#{canchaController.listaSedes}" var="s" 
-								itemLabel="#{s.sedeNombre}" itemValue="#{s}"/>
+		                <p:selectOneMenu id="sede" value="#{canchaController.cancha.centrodeportivo}" required="true" converter="omnifaces.SelectItemsConverter">
+                    		<f:selectItems value="#{canchaController.listaCentroDeportivos}" var="s" 
+								itemLabel="#{s.centrodeportivoNombre}" itemValue="#{s}"/>
 		                </p:selectOneMenu>
 		            </div>
-		
+		            
 		            <div class="p-field p-col-12 p-4">
-		                <p:outputLabel for="horario" value="Horario"/>
-		                <p:selectOneMenu id="horario" value="#{canchaController.cancha.horario}" required="true" converter="omnifaces.SelectItemsConverter">
-                    		<f:selectItems value="#{canchaController.listaHorarios}" var="h" 
-								itemLabel="#{h.horarioInicio} - #{h.horarioFin}" itemValue="#{h}"/>
-		                </p:selectOneMenu>
+		            	<p:selectManyMenu id="deportes" value="#{canchaController.cancha.canchaDeportes}"
+                            converter="omnifaces.SelectItemsConverter"
+                            var="d" filter="true" filterMatchMode="contains" showCheckbox="true" styleClass="manymenu-advanced">
+				            <f:selectItems value="#{deporteController.listaDeportes}" var="deporte" itemLabel="#{deporte.deporteNombre}"
+				                            itemValue="#{deporte}"/>
+				
+				            <p:column>
+				                <h:outputText value="#{d.deporteNombre}"/>
+				            </p:column>
+				        </p:selectManyMenu>
 		            </div>
 		        </div>
 		        <div>

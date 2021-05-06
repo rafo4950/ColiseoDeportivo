@@ -26,12 +26,19 @@
 		                <p:outputLabel for="nombre" value="Nombre"/>
 		                <p:inputText autocomplete="off" id="nombre"
 							styleClass="form-control"
-							value="#{sedeController.sede.sedeNombre}" maxlength="30"
+							value="#{centroDeportivoController.centrodeportivo.centrodeportivoNombre}" maxlength="30"
+							required="true" />
+		            </div>
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="direccion" value="Direccion"/>
+		                <p:inputText autocomplete="off" id="direccion"
+							styleClass="form-control"
+							value="#{centroDeportivoController.centrodeportivo.centrodeportivoDireccion}" maxlength="30"
 							required="true" />
 		            </div>
 		        </div>
 		        <div>
-					<p:commandButton value="Crear" action="admin-sedes?faces-redirect=true" actionListener="#{sedeController.insertar()}" styleClass="mb-3 ml-4"  ajax="false"/>
+					<p:commandButton value="Crear" action="admin-sedes?faces-redirect=true" actionListener="#{centroDeportivoController.insertar()}" styleClass="mb-3 ml-4"  ajax="false"/>
 				</div>
 		    </h:form>
 		</div>

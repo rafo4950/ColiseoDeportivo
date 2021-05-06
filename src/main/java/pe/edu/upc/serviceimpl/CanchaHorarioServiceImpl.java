@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import pe.edu.upc.dao.ICanchaHorarioDao;
 import pe.edu.upc.entity.CanchaHorario;
+import pe.edu.upc.entity.CanchaHorarioKey;
 import pe.edu.upc.service.ICanchaHorarioService;
 
 @Named
@@ -32,7 +33,7 @@ public class CanchaHorarioServiceImpl implements ICanchaHorarioService, Serializ
 	}
 
 	@Override
-	public void eliminar(int canchahorarioID) {
+	public void eliminar(CanchaHorarioKey canchahorarioID) {
 		cahD.eliminar(canchahorarioID);
 	}
 

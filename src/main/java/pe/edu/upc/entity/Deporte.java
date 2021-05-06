@@ -1,12 +1,18 @@
 package pe.edu.upc.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +26,9 @@ private static final long serialVersionUID = 1L;
 	
 	@Column(name="deporteNombre", nullable=false, length=30)
 	private String deporteNombre;
+	
+	@ManyToMany(mappedBy = "canchaDeportes")
+    private Set<Cancha> canchas = new HashSet<>();;
 
 	public Deporte() {
 		super();
@@ -46,6 +55,15 @@ private static final long serialVersionUID = 1L;
 
 	public void setDeporteNombre(String deporteNombre) {
 		this.deporteNombre = deporteNombre;
+	}
+	
+
+	public Set<Cancha> getCanchas() {
+		return canchas;
+	}
+
+	public void setCanchas(Set<Cancha> deporteCanchas) {
+		this.canchas = deporteCanchas;
 	}
 
 	@Override
@@ -76,6 +94,10 @@ private static final long serialVersionUID = 1L;
 		return true;
 	}
 
+	@Override
+	public String toString() {
+	    return String.format("%s[id=%d]", getClass().getSimpleName(), getDeporteID());
+	}
 	
 	
 }

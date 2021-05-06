@@ -1,20 +1,29 @@
 package pe.edu.upc.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="cancha")
 public class Cancha implements Serializable{
-private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
@@ -26,6 +35,17 @@ private static final long serialVersionUID = 1L;
 	
 	@Column(name="canchaNombre", nullable=false, length=30)
 	private String canchaNombre;
+	
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JoinTable(
+	        name = "canchas_deportes",
+	        joinColumns = { @JoinColumn(name = "canchaid", nullable = false)},
+	        inverseJoinColumns = {@JoinColumn(name="deporteid", nullable = false)}
+    )
+    private Set<Deporte> canchaDeportes = new HashSet<>();
+	
+	@OneToMany(mappedBy = "cancha", fetch = FetchType.EAGER)
+    private Set<CanchaHorario> horarios;
 
 	public Cancha() {
 		super();
@@ -37,7 +57,16 @@ private static final long serialVersionUID = 1L;
 		this.canchaID = canchaID;
 		this.centrodeportivo = centrodeportivo;
 		this.canchaNombre = canchaNombre;
+		this.canchaDeportes = new HashSet<>();
 	}
+	
+	public void agregarDeporte(Deporte deporte){
+        if(this.canchaDeportes == null){
+            this.canchaDeportes = new HashSet<>();
+        }
+        
+        this.canchaDeportes.add(deporte);
+    }
 
 	public int getCanchaID() {
 		return canchaID;
@@ -63,13 +92,31 @@ private static final long serialVersionUID = 1L;
 		this.canchaNombre = canchaNombre;
 	}
 
+	public Set<Deporte> getCanchaDeportes() {
+		return canchaDeportes;
+	}
+
+	public void setCanchaDeportes(Set<Deporte> canchaDeportes) {
+		this.canchaDeportes = canchaDeportes;
+	}
+
+	public Set<CanchaHorario> getHorarios() {
+		return horarios;
+	}
+
+	public void setHorarios(Set<CanchaHorario> horarios) {
+		this.horarios = horarios;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((canchaDeportes == null) ? 0 : canchaDeportes.hashCode());
 		result = prime * result + canchaID;
 		result = prime * result + ((canchaNombre == null) ? 0 : canchaNombre.hashCode());
 		result = prime * result + ((centrodeportivo == null) ? 0 : centrodeportivo.hashCode());
+		result = prime * result + ((horarios == null) ? 0 : horarios.hashCode());
 		return result;
 	}
 
@@ -82,6 +129,11 @@ private static final long serialVersionUID = 1L;
 		if (getClass() != obj.getClass())
 			return false;
 		Cancha other = (Cancha) obj;
+		if (canchaDeportes == null) {
+			if (other.canchaDeportes != null)
+				return false;
+		} else if (!canchaDeportes.equals(other.canchaDeportes))
+			return false;
 		if (canchaID != other.canchaID)
 			return false;
 		if (canchaNombre == null) {
@@ -93,6 +145,11 @@ private static final long serialVersionUID = 1L;
 			if (other.centrodeportivo != null)
 				return false;
 		} else if (!centrodeportivo.equals(other.centrodeportivo))
+			return false;
+		if (horarios == null) {
+			if (other.horarios != null)
+				return false;
+		} else if (!horarios.equals(other.horarios))
 			return false;
 		return true;
 	}

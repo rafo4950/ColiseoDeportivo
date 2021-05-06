@@ -20,8 +20,8 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="card form-group table-responsive box-table-class">
-						<p:dataTable id="listaSedes" var="sede"
-							value="#{sedeController.listaSedes}"
+						<p:dataTable id="listaSedes" var="centro"
+							value="#{centroDeportivoController.listaCentroDeportivos}"
 							styleClass="table table-bordered"
 							emptyMessage="No existen registros" 
 							>
@@ -30,18 +30,18 @@
 					            <div class="d-flex justify-content-between align-items-center">
 					                Centros deportivos
 					                <div>
-										<p:commandButton value="Crear centro deportivo" actionListener="#{sedeController.nuevoSede()}" action="admin-sedes-crear?faces-redirect=true" styleClass="p-mt-3"  ajax="false"/>
+										<p:commandButton value="Crear centro deportivo" actionListener="#{centroDeportivoController.nuevoCentroDeportivo()}" action="admin-sedes-crear?faces-redirect=true" styleClass="p-mt-3"  ajax="false"/>
 									</div>
 					            </div>
 					        </f:facet>
 
-							<p:column headerText="Nombre" sortBy="#{cancha.deporte.sportNombre}">
-								<h:outputText value="#{sede.sedeNombre}" />
+							<p:column headerText="Nombre">
+								<h:outputText value="#{centro.centrodeportivoNombre}" />
 							</p:column>
 
 							<p:column headerText="Operación" exportable="false">			
 								<p:commandButton styleClass="ui-button-warning rounded-button" icon="pi pi-trash" 
-									actionListener="#{sedeController.eliminar(sede)}" update="listaSedes" />	
+									actionListener="#{centroDeportivoController.eliminar(centro)}" update="listaSedes" />	
 							</p:column>
 
 						</p:dataTable>

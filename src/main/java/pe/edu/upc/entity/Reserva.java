@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -25,7 +26,10 @@ private static final long serialVersionUID = 1L;
 	private Cliente cliente;
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name="canchahorarioID")
+	@JoinColumns({
+	     @JoinColumn(name="canchaid", referencedColumnName="canchaid"),
+	     @JoinColumn(name="horarioid", referencedColumnName="horarioid")
+	})
 	private CanchaHorario canchahorario;
 	
 	@ManyToOne(optional = false)
