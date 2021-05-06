@@ -29,6 +29,9 @@
 							<f:facet name="header">
 					            <div class="d-flex justify-content-between align-items-center">
 					                Usuarios
+					                <div>
+										<p:commandButton value="Crear Usuario" actionListener="#{usuarioController.nuevoUsuario()}" action="admin-usuarios-crear?faces-redirect=true" styleClass="p-mt-3"  ajax="false"/>
+									</div>
 					            </div>
 					        </f:facet>
 
@@ -46,6 +49,10 @@
 							
 							<p:column headerText="Correo" sortBy="#{usuario.userCorreo}">
 								<h:outputText value="#{usuario.userCorreo}" />
+							</p:column>
+							
+							<p:column headerText="Contraseña" sortBy="#{usuario.userContrasena}">
+								<h:outputText value="#{usuario.userContrasena}" />
 							</p:column>
 							
 

@@ -1,0 +1,82 @@
+
+<ui:composition template="templates/admin-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="adminHeadContent"></ui:define>
+	
+	<ui:define name="centrosLink">
+	  <a class="nav-link active" href="admin-usuarios.xhtml">
+        <span data-feather="flag"></span>
+        Usuarios
+      </a>
+	</ui:define>
+	
+	<ui:define name="adminPageContent">
+ 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+         <h1 class="h2">Crear Usuario</h1>
+       	</div>
+       	<div class="card">
+		    <h:form>
+		        <div class="ui-fluid p-formgrid p-grid">
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="nombre" value="Nombre"/>
+		                <p:inputText autocomplete="off" id="nombre"
+							styleClass="form-control"
+							value="#{usuarioController.usuario.userNombre}" maxlength="30"
+							required="true" />
+		            </div>
+		            
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="apellido1" value="Apellido Paterno"/>
+		                <p:inputText autocomplete="off" id="apellido1"
+							styleClass="form-control"
+							value="#{usuarioController.usuario.userPrimerApellido}" maxlength="30"
+							required="true" />
+		            </div>
+		            
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="apellido2" value="Apellido Materno"/>
+		                <p:inputText autocomplete="off" id="apellido2"
+							styleClass="form-control"
+							value="#{usuarioController.usuario.userSegundoApellido}" maxlength="30"
+							required="true" />
+		            </div>
+		            
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="fecha" value="Fecha Nacimiento" styleClass="control-label"/>
+		                <p:calendar id="fecha" pattern="dd/MM/yyyy"
+							value="#{usuarioController.usuario.userFechaNacimiento}" showOn="button"
+							timeZone="UTC" required="true">
+						</p:calendar>
+		            </div>
+		            
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="correo" value="Correo"/>
+		                <p:inputText autocomplete="off" id="correo"
+							styleClass="form-control"
+							value="#{usuarioController.usuario.userCorreo}" maxlength="50"
+							required="true" />
+		            </div>
+		            
+		            <div class="p-field p-col-12 p-4">
+		                <p:outputLabel for="contrasena" value="Contrasena"/>
+		                <p:inputText autocomplete="off" id="contrasena"
+							styleClass="form-control"
+							value="#{usuarioController.usuario.userContrasena}" maxlength="30"
+							required="true" />
+		            </div>
+		        </div>
+		        <div>
+					<p:commandButton value="Crear" action="admin-usuarios?faces-redirect=true" actionListener="#{usuarioController.insertar()}" styleClass="mb-3 ml-4"  ajax="false"/>
+				</div>
+		    </h:form>
+		</div>
+	</ui:define>
+		
+	<ui:define name="adminFooterContent"></ui:define>
+		
+</ui:composition> 
