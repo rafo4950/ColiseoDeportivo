@@ -11,7 +11,6 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.dao.ICanchaHorarioDao;
 import pe.edu.upc.entity.CanchaHorario;
-import pe.edu.upc.entity.CanchaHorarioKey;
 
 public class CanchaHorarioDaoImpl implements ICanchaHorarioDao, Serializable{
 	private static final long serialVersionUID = 1L;
@@ -37,7 +36,7 @@ public class CanchaHorarioDaoImpl implements ICanchaHorarioDao, Serializable{
 	
 	@Transactional
 	@Override
-	public void eliminar(CanchaHorarioKey canchahorarioID) {
+	public void eliminar(int canchahorarioID) {
 		CanchaHorario canchahorario = new CanchaHorario();
 		canchahorario = em.getReference(CanchaHorario.class, canchahorarioID);
 		em.remove(canchahorario);

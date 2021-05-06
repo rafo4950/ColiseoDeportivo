@@ -22,8 +22,8 @@ private static final long serialVersionUID = 1L;
 	private int reservaID;
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name="clienteID")
-	private Cliente cliente;
+	@JoinColumn(name="usuarioID")
+	private Usuario usuario;
 	
 	@ManyToOne(optional = false)
 	@JoinColumns({
@@ -32,7 +32,7 @@ private static final long serialVersionUID = 1L;
 	})
 	private CanchaHorario canchahorario;
 	
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	@JoinColumn(name="estadoID")
 	private Estado estado;
 
@@ -43,10 +43,10 @@ private static final long serialVersionUID = 1L;
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reserva(int reservaID, Cliente cliente, CanchaHorario canchahorario, Estado estado, Date reservaFecha) {
+	public Reserva(int reservaID, Usuario usuario, CanchaHorario canchahorario, Estado estado, Date reservaFecha) {
 		super();
 		this.reservaID = reservaID;
-		this.cliente = cliente;
+		this.usuario = usuario;
 		this.canchahorario = canchahorario;
 		this.estado = estado;
 		this.reservaFecha = reservaFecha;
@@ -60,12 +60,12 @@ private static final long serialVersionUID = 1L;
 		this.reservaID = reservaID;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public CanchaHorario getCanchahorario() {
@@ -91,6 +91,8 @@ private static final long serialVersionUID = 1L;
 	public void setReservaFecha(Date reservaFecha) {
 		this.reservaFecha = reservaFecha;
 	}
+
+	
 
 	
 }

@@ -3,38 +3,33 @@ package pe.edu.upc.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="canchahorario")
 public class CanchaHorario implements Serializable{
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 	
-	@EmbeddedId
-	private CanchaHorarioKey id;
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	private int canchahorarioID;
 	
-	@ManyToOne
-    @MapsId("canchaID")
+	@ManyToOne(optional = false)
 	@JoinColumn(name="canchaID")
 	private Cancha cancha;
 	
-	@ManyToOne
-	@MapsId("horarioID")
+	@ManyToOne(optional = false)
 	@JoinColumn(name="horarioID")
 	private Horario horario;
 	
-	@ManyToOne
-	@MapsId("deporteID")
-	@JoinColumn(name="deporteID")
-	private Deporte deporte;
+	@Column(name="canchahorarioDisponibilidad")
+	private boolean canchahorarioDisponibilidad;
 	
 	@Column(name="canchahorarioPrecio", nullable=false)
 	private float canchahorarioPrecio;
@@ -42,24 +37,24 @@ public class CanchaHorario implements Serializable{
 	public CanchaHorario() {
 		super();
 		// TODO Auto-generated constructor stub
-		this.cancha = new Cancha();
-		this.horario = new Horario();
-		this.deporte = new Deporte();
 	}
 
-	public CanchaHorario(CanchaHorarioKey id, float canchahorarioPrecio) {
+	public CanchaHorario(int canchahorarioID, Cancha cancha, Horario horario, boolean canchahorarioDisponibilidad,
+			float canchahorarioPrecio) {
 		super();
-		this.id = id;
+		this.canchahorarioID = canchahorarioID;
+		this.cancha = cancha;
+		this.horario = horario;
+		this.canchahorarioDisponibilidad = canchahorarioDisponibilidad;
 		this.canchahorarioPrecio = canchahorarioPrecio;
 	}
 
-
-	public CanchaHorarioKey getId() {
-		return id;
+	public int getCanchahorarioID() {
+		return canchahorarioID;
 	}
 
-	public void setId(CanchaHorarioKey id) {
-		this.id = id;
+	public void setCanchahorarioID(int canchahorarioID) {
+		this.canchahorarioID = canchahorarioID;
 	}
 
 	public Cancha getCancha() {
@@ -78,6 +73,14 @@ public class CanchaHorario implements Serializable{
 		this.horario = horario;
 	}
 
+	public boolean isCanchahorarioDisponibilidad() {
+		return canchahorarioDisponibilidad;
+	}
+
+	public void setCanchahorarioDisponibilidad(boolean canchahorarioDisponibilidad) {
+		this.canchahorarioDisponibilidad = canchahorarioDisponibilidad;
+	}
+
 	public float getCanchahorarioPrecio() {
 		return canchahorarioPrecio;
 	}
@@ -86,20 +89,15 @@ public class CanchaHorario implements Serializable{
 		this.canchahorarioPrecio = canchahorarioPrecio;
 	}
 
-	public Deporte getDeporte() {
-		return deporte;
-	}
-
-	public void setDeporte(Deporte deporte) {
-		this.deporte = deporte;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((cancha == null) ? 0 : cancha.hashCode());
+		result = prime * result + (canchahorarioDisponibilidad ? 1231 : 1237);
+		result = prime * result + canchahorarioID;
 		result = prime * result + Float.floatToIntBits(canchahorarioPrecio);
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((horario == null) ? 0 : horario.hashCode());
 		return result;
 	}
 
@@ -112,14 +110,24 @@ public class CanchaHorario implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		CanchaHorario other = (CanchaHorario) obj;
+		if (cancha == null) {
+			if (other.cancha != null)
+				return false;
+		} else if (!cancha.equals(other.cancha))
+			return false;
+		if (canchahorarioDisponibilidad != other.canchahorarioDisponibilidad)
+			return false;
+		if (canchahorarioID != other.canchahorarioID)
+			return false;
 		if (Float.floatToIntBits(canchahorarioPrecio) != Float.floatToIntBits(other.canchahorarioPrecio))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (horario == null) {
+			if (other.horario != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!horario.equals(other.horario))
 			return false;
 		return true;
 	}
+
 	
 }
